@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Base_Interaction : MonoBehaviour
+public enum EInteractionType
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Instantaneous = 0,
+    OverTime = 1
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public abstract class Base_Interaction : MonoBehaviour
+{
+
+    [SerializeField] protected string _DisplayName;
+    [SerializeField] protected EInteractionType _InteractionType = EInteractionType.Instantaneous;
+    [SerializeField] protected float _Duration = 0f;
+
+    public string DisplayName => _DisplayName;
+    public EInteractionType InteractionType => _InteractionType;
+    public float Duration => _Duration;
+
+    public abstract bool CanPerform();
+    public abstract void LockInteraction();
+
+    public abstract void Perform(MonoBehaviour performer, UnityEvent<Base_Interaction> onCompleted);
+    public abstract void UnlockInteraction();
 }
