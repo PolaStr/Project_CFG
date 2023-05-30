@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Base_Navigation_System))]
+[RequireComponent(typeof(Base_Navigation))]
 public class Simple_AI : MonoBehaviour
 {
     [SerializeField] protected float PickInteractionInterval = 2f;
 
-    protected Base_Navigation_System Navigation;
+    protected Base_Navigation Navigation;
 
     protected Base_Interaction CurrentInteraction = null;
 
@@ -15,7 +15,7 @@ public class Simple_AI : MonoBehaviour
 
     private void Awake()
     {
-        Navigation = GetComponent<Base_Navigation_System>();
+        Navigation = GetComponent<Base_Navigation>();
     }
 
     void Start()
