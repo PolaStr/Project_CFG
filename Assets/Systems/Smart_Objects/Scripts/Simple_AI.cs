@@ -10,6 +10,7 @@ public class Simple_AI : MonoBehaviour
     protected Base_Navigation Navigation;
 
     protected Base_Interaction CurrentInteraction = null;
+    protected bool StartedPerforming = false;
 
     protected float TimeUntilNextInteractionPicked = -1f;
 
@@ -27,8 +28,11 @@ public class Simple_AI : MonoBehaviour
     {
         if (CurrentInteraction != null && Navigation.IsAtDestination)
         {
-            if (Navigation.IsAtDestination)
-            CurrentInteraction.Perform(this, OnInteractionFinished);
+            if (Navigation.IsAtDestination && ! StartedPerforming)
+            {
+                StartedPerforming= true;
+                CurrentInteraction.Perform(this, OnInteractionFinished);
+            }
         }
         else
         {
@@ -65,9 +69,10 @@ public class Simple_AI : MonoBehaviour
         {
             CurrentInteraction = selectedInteraction;
             CurrentInteraction.LockInteraction();
+            StartedPerforming = false;
 
             //move to the target
-            if (!Navigation.SetDestination(CurrentInteraction.transform.position))
+            if (!Navigation.SetDestination(selectedObject.InteractionPoint))
             {
                 Debug.LogError($"Could not move to {selectedObject.name}");
                 CurrentInteraction = null;
