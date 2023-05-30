@@ -2147,7 +2147,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1248
+  m_Name: pb_Mesh-1278
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2311,7 +2311,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1234
+  m_Name: pb_Mesh-1264
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13387,6 +13387,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7497166431585739094, guid: 0909f5975383d32488c1bca17a2daade,
+        type: 3}
+      propertyPath: _InteractionType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8080048715313234924, guid: 0909f5975383d32488c1bca17a2daade,
         type: 3}
       propertyPath: m_StaticEditorFlags
