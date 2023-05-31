@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public enum EInteractionType
 {
@@ -23,12 +24,12 @@ public abstract class Base_Interaction : MonoBehaviour
     [SerializeField] protected string _DisplayName;
     [SerializeField] protected EInteractionType _InteractionType = EInteractionType.Instantaneous;
     [SerializeField] protected float _Duration = 0f;
-    [SerializeField] protected InteractionStatChange[] StatChanges;
+    [SerializeField, FormerlySerializedAs ("StatChanges")] protected InteractionStatChange[] _StatChanges;
 
     public string DisplayName => _DisplayName;
     public EInteractionType InteractionType => _InteractionType;
     public float Duration => _Duration;
-
+    public InteractionStatChange[] StatChanges => _StatChanges;
     public abstract bool CanPerform();
     public abstract void LockInteraction();
 
