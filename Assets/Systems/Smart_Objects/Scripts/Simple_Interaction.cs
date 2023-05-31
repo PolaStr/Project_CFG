@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,7 @@ public class Simple_Interaction : Base_Interaction
 {
     protected class PerformerInfo
     {
+        public Common_AI_Base PerformingAI;
         public float ElapsedTime;
         public UnityAction<Base_Interaction> OnCompleted;
     }
@@ -28,7 +30,7 @@ public class Simple_Interaction : Base_Interaction
             Debug.LogError($"Too many users have locked this interaction {_DisplayName}");
     }
 
-    public override void Perform(MonoBehaviour performer, UnityAction<Base_Interaction> onCompleted)
+    public override void Perform(Common_AI_Base performer, UnityAction<Base_Interaction> onCompleted)
     {
         if (NumCurrentUsers <= 0)
         {
@@ -39,12 +41,16 @@ public class Simple_Interaction : Base_Interaction
         //check the interaction type
         if (InteractionType == EInteractionType.Instantaneous)
         {
-            if (onCompleted!= null)
+            if  (StatChanges.Length > 0)
+                ApplyStatChanges(performer, 1f);
+
                 onCompleted.Invoke(this);
         }
         else if (InteractionType == EInteractionType.OverTime)
         {
-            CurrentPerformers.Add(new PerformerInfo() { ElapsedTime = 0, OnCompleted = onCompleted });
+            CurrentPerformers.Add(new PerformerInfo() { PerformingAI = performer,
+                                                        ElapsedTime = 0,
+                                                        OnCompleted = onCompleted });
         }
     }
 
@@ -63,8 +69,15 @@ public class Simple_Interaction : Base_Interaction
         {
             PerformerInfo performer = CurrentPerformers[index];
 
-            performer.ElapsedTime += Time.deltaTime;
+            float previousElapsedTime = performer.ElapsedTime;
+            performer.ElapsedTime += Mathf.Min(performer.ElapsedTime + Time.deltaTime, _Duration);
 
+            if (StatChanges.Length > 0)
+            if (StatChanges.Length > 0)
+                ApplyStatChanges(performer.PerformingAI,
+                                (performer.ElapsedTime - previousElapsedTime) / _Duration);
+
+            //interaction complete?
             if (performer.ElapsedTime >= _Duration)
             {
                 performer.OnCompleted.Invoke(this);
