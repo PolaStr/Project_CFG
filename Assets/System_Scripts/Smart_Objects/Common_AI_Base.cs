@@ -15,6 +15,9 @@ public enum EStat
 
 public class Common_AI_Base : MonoBehaviour
 {
+    [Header("General")]
+    [SerializeField] int HouseholdID = 1;
+
     [Header("Fun")]
     [SerializeField] float InitialFunLevel = 0.5f;
     [SerializeField] float BaseFunDecayRate = 0.005f;
@@ -45,27 +48,54 @@ public class Common_AI_Base : MonoBehaviour
     protected Base_Interaction CurrentInteraction = null;
     protected bool StartedPerforming = false;
 
-    public float CurrentFun { get; protected set; }
-    public float CurrentSleep { get; protected set; }
-    public float CurrentContact { get; protected set; }
-    public float CurrentPhysiology { get; protected set; }
-    public float CurrentFood { get; protected set; }
+    public float CurrentFun
+    {
+        get { return Individual_Needsboards.GetFloat(ENeedsBoardKey.Character_Stat_Fun); }
+        set { Individual_Needsboards.Set(ENeedsBoardKey.Character_Stat_Fun, value); }
+    }
+
+    public float CurrentSleep
+    {
+        get { return Individual_Needsboards.GetFloat(ENeedsBoardKey.Character_Stat_Sleep); }
+        set { Individual_Needsboards.Set(ENeedsBoardKey.Character_Stat_Sleep, value); }
+    }
+
+    public float CurrentContact
+    {
+        get { return Individual_Needsboards.GetFloat(ENeedsBoardKey.Character_Stat_Contact); }
+        set { Individual_Needsboards.Set(ENeedsBoardKey.Character_Stat_Contact, value); }
+    }
+
+    public float CurrentPhysiology
+    {
+        get { return Individual_Needsboards.GetFloat(ENeedsBoardKey.Character_Stat_Physiology); }
+        set { Individual_Needsboards.Set(ENeedsBoardKey.Character_Stat_Physiology, value); }
+    }
+
+    public float CurrentFood
+    {
+        get { return Individual_Needsboards.GetFloat(ENeedsBoardKey.Character_Stat_Food); }
+        set { Individual_Needsboards.Set(ENeedsBoardKey.Character_Stat_Food, value); }
+    }
+
+    public Needsboard Individual_Needsboards { get; protected set;  }
+    public Needsboard HouseholdNeedsboards { get; protected set; }
 
 
     protected virtual void Awake()
     {
-        FunDisplay.value = CurrentFun = InitialFunLevel;
-        SleepDisplay.value = CurrentSleep = InitialSleepLevel;
-        ContactDisplay.value = CurrentContact = InitialContactLevel;
-        PhysiologyDisplay.value = CurrentPhysiology = InitialPhysiologyLevel;
-        FoodDisplay.value = CurrentFood = InitialFoodLevel;
-
         Navigation = GetComponent<Base_Navigation>();
     }
 
     protected virtual void Start()
     {
-
+        HouseholdNeedsboards = 
+        Individual_Needsboards = Needs_Board_Manager.Instance.GetIndividualBlackboard(this);
+        FunDisplay.value = CurrentFun = InitialFunLevel;
+        SleepDisplay.value = CurrentSleep = InitialSleepLevel;
+        ContactDisplay.value = CurrentContact = InitialContactLevel;
+        PhysiologyDisplay.value = CurrentPhysiology = InitialPhysiologyLevel;
+        FoodDisplay.value = CurrentFood = InitialFoodLevel;
     }
 
     protected virtual void Update()
