@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _DisplayName: Toilet
-  _InteractionMarker: {fileID: 0}
+  _InteractionMarker: {fileID: 3663531890548960034}
 --- !u!114 &5776027132701116140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   _DisplayName: Using bathroom
   _InteractionType: 1
   _Duration: 5
+  StatChanges: []
   MaxSimultaneousUsers: 1
 --- !u!1 &2970857711800045556
 GameObject:
@@ -525,7 +526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3663531890548960034}
   m_Layer: 0
-  m_Name: Interaction_Point_Fridge
+  m_Name: Interaction_Point_Toilet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

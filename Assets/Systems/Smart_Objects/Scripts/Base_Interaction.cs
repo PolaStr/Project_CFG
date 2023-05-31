@@ -32,6 +32,14 @@ public abstract class Base_Interaction : MonoBehaviour
     public abstract bool CanPerform();
     public abstract void LockInteraction();
 
-    public abstract void Perform(MonoBehaviour performer, UnityAction<Base_Interaction> onCompleted);
+    public abstract void Perform(Common_AI_Base performer, UnityAction<Base_Interaction> onCompleted);
     public abstract void UnlockInteraction();
+
+    public void ApplyStatChanges(Common_AI_Base performer, float proportion)
+    {
+        foreach(var statChange in StatChanges)
+        {
+            performer.UpdateIndividualStat(statChange.Target, statChange.Value * proportion);
+        }
+    }
 }

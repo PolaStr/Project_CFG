@@ -924,7 +924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _DisplayName: Bed
-  _InteractionMarker: {fileID: 0}
+  _InteractionMarker: {fileID: 1191367769220991968}
 --- !u!114 &-5810425711549232592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,4 +940,5 @@ MonoBehaviour:
   _DisplayName: Sleep
   _InteractionType: 1
   _Duration: 5
+  StatChanges: []
   MaxSimultaneousUsers: 1

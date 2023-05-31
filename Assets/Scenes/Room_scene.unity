@@ -204,6 +204,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5264eef6f1ac4459742985b574dccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialFunLevel: 0.5
+  BaseFunDecayRate: 0.005
+  FunDisplay: {fileID: 0}
+  InitialSleepLevel: 0.5
+  BaseSleepDecayRate: 0.005
+  SleepDisplay: {fileID: 0}
+  InitialContactLevel: 0.5
+  BaseContactDecayRate: 0.005
+  ContactDisplay: {fileID: 0}
+  InitialPhysiologyLevel: 0.5
+  BasePhysiologyDecayRate: 0.005
+  PhysiologyDisplay: {fileID: 0}
+  InitialFoodLevel: 0.5
+  BaseFoodDecayRate: 0.005
+  FoodDisplay: {fileID: 0}
   PickInteractionInterval: 2
 --- !u!114 &522837944
 MonoBehaviour:
@@ -933,6 +948,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9658062623455022, guid: 0f3fba855ed2af64f83fdf9fdf717c57, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9658062623455022, guid: 0f3fba855ed2af64f83fdf9fdf717c57, type: 3}
+      propertyPath: FunDisplay
+      value: 
+      objectReference: {fileID: 2155537308732093619}
+    - target: {fileID: 9658062623455022, guid: 0f3fba855ed2af64f83fdf9fdf717c57, type: 3}
+      propertyPath: FoodDisplay
+      value: 
+      objectReference: {fileID: 95983761760407741}
+    - target: {fileID: 9658062623455022, guid: 0f3fba855ed2af64f83fdf9fdf717c57, type: 3}
+      propertyPath: SleepDisplay
+      value: 
+      objectReference: {fileID: 5211374322942879362}
+    - target: {fileID: 9658062623455022, guid: 0f3fba855ed2af64f83fdf9fdf717c57, type: 3}
+      propertyPath: ContactDisplay
+      value: 
+      objectReference: {fileID: 5351369741870421533}
+    - target: {fileID: 9658062623455022, guid: 0f3fba855ed2af64f83fdf9fdf717c57, type: 3}
+      propertyPath: PhysiologyDisplay
+      value: 
+      objectReference: {fileID: 1619618580261170972}
+    - target: {fileID: 9658062623455022, guid: 0f3fba855ed2af64f83fdf9fdf717c57, type: 3}
+      propertyPath: PickInteractionInterval
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 179089297227490841, guid: 0f3fba855ed2af64f83fdf9fdf717c57,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -991,6 +1034,11 @@ PrefabInstance:
     - target: {fileID: 551962025062748355, guid: 0f3fba855ed2af64f83fdf9fdf717c57,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 928627888724281976, guid: 0f3fba855ed2af64f83fdf9fdf717c57,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 928627888724281976, guid: 0f3fba855ed2af64f83fdf9fdf717c57,
@@ -1249,6 +1297,11 @@ PrefabInstance:
       propertyPath: StatChanges.Array.data[0].Value
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1209139173863439165, guid: 0909f5975383d32488c1bca17a2daade,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.683
+      objectReference: {fileID: 0}
     - target: {fileID: 1209139174062095712, guid: 0909f5975383d32488c1bca17a2daade,
         type: 3}
       propertyPath: m_RootOrder
@@ -1327,7 +1380,12 @@ PrefabInstance:
     - target: {fileID: 1209139174656498442, guid: 0909f5975383d32488c1bca17a2daade,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 16420
+      value: 16429
+      objectReference: {fileID: 0}
+    - target: {fileID: 1209139175171141000, guid: 0909f5975383d32488c1bca17a2daade,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -27.077
       objectReference: {fileID: 0}
     - target: {fileID: 1209139175449001676, guid: 0909f5975383d32488c1bca17a2daade,
         type: 3}
@@ -1339,6 +1397,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1356793305}
+    - target: {fileID: 1209139175449001678, guid: 0909f5975383d32488c1bca17a2daade,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1209139175449001681, guid: 0909f5975383d32488c1bca17a2daade,
         type: 3}
       propertyPath: m_Mesh
@@ -1347,7 +1410,7 @@ PrefabInstance:
     - target: {fileID: 1209139175449001681, guid: 0909f5975383d32488c1bca17a2daade,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 3224
+      value: 3233
       objectReference: {fileID: 0}
     - target: {fileID: 3355754447699554117, guid: 0909f5975383d32488c1bca17a2daade,
         type: 3}

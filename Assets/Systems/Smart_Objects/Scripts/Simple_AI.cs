@@ -3,38 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Base_Navigation))]
-public class Simple_AI : MonoBehaviour
+public class Simple_AI : Common_AI_Base
 {
     [SerializeField] protected float PickInteractionInterval = 2f;
 
-    protected Base_Navigation Navigation;
-
-    protected Base_Interaction CurrentInteraction = null;
-    protected bool StartedPerforming = false;
-
     protected float TimeUntilNextInteractionPicked = -1f;
 
-    private void Awake()
+    protected override void Update()
     {
-        Navigation = GetComponent<Base_Navigation>();
-    }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        if (CurrentInteraction != null && Navigation.IsAtDestination)
-        {
-            if (Navigation.IsAtDestination && ! StartedPerforming)
-            {
-                StartedPerforming= true;
-                CurrentInteraction.Perform(this, OnInteractionFinished);
-            }
-        }
-        else
+        base.Update();
+        if (CurrentInteraction == null)
         {
             TimeUntilNextInteractionPicked -= Time.deltaTime;
 
@@ -45,13 +23,6 @@ public class Simple_AI : MonoBehaviour
                 PickRandomInteraction();
             }
         }
-    }
-
-    void OnInteractionFinished(Base_Interaction interaction)
-    {
-        interaction.UnlockInteraction();
-        CurrentInteraction = null;
-        Debug.Log($"Finished {interaction.DisplayName}");
     }
 
     void PickRandomInteraction()
